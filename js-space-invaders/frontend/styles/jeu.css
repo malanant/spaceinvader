@@ -1,0 +1,30 @@
+#game {
+    background-color: rgb(58, 57, 57);
+    border-bottom: 2px solid rgb(92, 245, 46);
+    
+    height: 600px;
+    width: 700px;
+    position: relative;
+    left: 600px;
+}
+
+#joueur {
+    position: absolute;
+    height: 25px;
+    width: 50px;
+    bottom: 10px;
+    background-image: url(../sprites/player.png);
+    background-size: contain;
+}
+
+#ennemis{
+    height: 10px;
+    width: 10px;
+}
+
+.extra{
+    width: auto;
+    height: auto;
+    position: relative;
+    right: -50%;
+}

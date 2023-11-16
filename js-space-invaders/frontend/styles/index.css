@@ -1,0 +1,48 @@
+@font-face {
+    font-family: VCR;
+    src: url(../fonts/VCR_OSD_MONO_1.001.ttf);
+}
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    background-color: black;
+    color: rgb(255, 255, 255);
+    font-family: VCR;
+    font-size: 32px;
+}
+
+#joueurs {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+}
+
+#score {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    gap: 125px;
+    margin-bottom: 100px;
+}
+
+#accueil {
+    width: 100%;
+    height: auto;
+    text-align: center;
+}
+
+#credit {
+    position: relative;
+    top: 100%;
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+} 
