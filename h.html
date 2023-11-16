@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    canvas {
+      border: 1px solid #000;
+    }
+  </style>
+  <title>Space Invaders</title>
+</head>
+<body>
+  <canvas id="gameCanvas" width="400" height="300"></canvas>
+
+  <script>
+    const canvas = document.getElementById('gameCanvas');
+    const ctx = canvas.getContext('2d');
+
+    class Enemy {
+      constructor(x, y) {
+        this.x = x;
+        this.y = y;
+        this.width = 20;
+        this.height = 20;
+        this.speed = 2;
+        this.direction = 1; // 1 pour droite, -1 pour gauche
+        this.canShoot = true; // Indique si l'ennemi peut tirer
+      }
+
+      draw() {
+        ctx.fillStyle = '#FF0000';
+        ctx.fillRect(this.x, this.y, this.width, this.height);
+      }
+
+      move() {
+        this.x += this.speed * this.direction;
+
+        // Change la direction si l'ennemi atteint les bords du canvas
+        if (this.x + this.width > canvas.width || this.x < 0) {
+          this.direction *= -1;
+          this.y += 20; // Fait descendre l'ennemi à chaque collision avec le mur
+          this.canShoot = true; // Permet à l'ennemi de tirer après la descente
+        }
+      }
+
+      shoot() {
+        // Logique de tir ici
+        if (this.canShoot && Math.random() < 0.05) {
+          console.log('Enemy shoots!');
+          // Ajoutez ici la logique pour créer un tir
+          // (par exemple, créez une instance de la classe Bullet)
+          this.canShoot = false; // Réinitialise le drapeau de tir
+        }
+      }
+    }
+
+    const enemies = [];
+    for (let i = 0; i < 5; i++) {
+      enemies.push(new Enemy(i * 80, 30));
+    }
+
+    function renderGame() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      for (let enemy of enemies) {
+        enemy.move();
+        enemy.draw();
+        enemy.shoot();
+      }
+    }
+
+    function gameLoop() {
+      renderGame();
+      requestAnimationFrame(gameLoop);
+    }
+
+    // Lancez la boucle de jeu
+    gameLoop();
+  </script>
+</body>
+</html>
